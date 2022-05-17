@@ -34,19 +34,18 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-
-
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         /**
          * Sets the LifecycleOwner that should be used for observing changes of LiveData
          * in this binding. If a LiveData is in one of the binding expressions and no
          * LifecycleOwner is set, the LiveData will not be observed and updates to it
          * will not be propagated to the UI.*/
         binding.lifecycleOwner = this
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         model.getRandomMealList()
         model.randomMealList.observe(viewLifecycleOwner) { response ->

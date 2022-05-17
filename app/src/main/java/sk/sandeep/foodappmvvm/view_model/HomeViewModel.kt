@@ -27,9 +27,9 @@ class HomeViewModel @Inject constructor(
 
     var mealResponse: MealResponse? = null
 
-   /* init {
+    init {
         getRandomMealList()
-    }*/
+    }
 
     fun getRandomMealList() = viewModelScope.launch {
 
