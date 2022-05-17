@@ -6,9 +6,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
+import dagger.hilt.android.AndroidEntryPoint
 import sk.sandeep.foodappmvvm.R
 import sk.sandeep.foodappmvvm.databinding.ActivityMealBinding
-
+/** Entry Point of Meal App */
+@AndroidEntryPoint
 class MealActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMealBinding

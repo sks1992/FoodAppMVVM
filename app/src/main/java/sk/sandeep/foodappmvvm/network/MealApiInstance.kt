@@ -1,5 +1,7 @@
 package sk.sandeep.foodappmvvm.network
 
+
+//we are using Dagger hilt so we don't use this api instance
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
