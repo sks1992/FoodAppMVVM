@@ -5,9 +5,15 @@
     <string name="home">Home</string>
     <string name="favorite">Favorite</string>
     <string name="category">Category</string>
+    <string name="category1">Category : Beef</string>
     <string name="search_image">Search Image</string>
     <string name="what_would_you_like_to_eat">What would you like to eat?</string>
     <string name="random_image">Random Image</string>
     <string name="over_popular_items">Over Popular Items</string>
     <string name="categories">Categories</string>
+    <string name="meal_image">Meal Image</string>
+    <string name="fab">fab</string>
+    <string name="area1">Area :Bikaner</string>
+    <string name="instructions">- Instructions :</string>
+    <string name="youtube_icon">Youtube Icon</string>
 </resources>

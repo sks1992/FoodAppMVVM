@@ -24,4 +24,6 @@ class MealRepository @Inject constructor(
     suspend fun getRandomMealList(): Response<MealResponse> {
         return api.getRandomMeal()
     }
+
+
 }

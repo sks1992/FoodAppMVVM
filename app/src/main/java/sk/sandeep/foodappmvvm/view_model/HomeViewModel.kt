@@ -5,18 +5,18 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import sk.sandeep.foodappmvvm.models.Meal
 import sk.sandeep.foodappmvvm.models.MealResponse
-import sk.sandeep.foodappmvvm.repository.MealRepository
+import sk.sandeep.foodappmvvm.network.MealApi
 import sk.sandeep.foodappmvvm.util_or_constants.Resource
 import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val repository: MealRepository
+    private val api: MealApi
 ) : ViewModel() {
 
     // The internal MutableLiveData that stores the status of the most recent request
@@ -24,6 +24,10 @@ class HomeViewModel @Inject constructor(
 
     // The external immutable LiveData for the request status
     val randomMealList: LiveData<Resource<MealResponse>> = _randomMealList
+
+    private var _randomMealLiveData = MutableLiveData<Meal>()
+    val randomMealLiveData: LiveData<Meal> = _randomMealLiveData
+
 
     var mealResponse: MealResponse? = null
 
@@ -36,9 +40,9 @@ class HomeViewModel @Inject constructor(
         _randomMealList.postValue(Resource.Loading())
 
         try {
-            val response = repository.getRandomMealList()
-            delay(2000L)
+            val response = api.getRandomMeal()
             _randomMealList.postValue(responseToResource(response))
+            _randomMealLiveData.value = response.body()?.meals?.get(0)
         } catch (t: Throwable) {
             when (t) {
                 is IOException -> _randomMealList.postValue(Resource.Error("Network Failure"))
